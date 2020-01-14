@@ -33,6 +33,9 @@ public class RobotContainer {
   public RobotContainer() {
     driveTrain = new DriveTrain();
     // Configure the button bindings
+
+    driveTrain = new DriveTrain();
+
     configureButtonBindings();
   }
 
