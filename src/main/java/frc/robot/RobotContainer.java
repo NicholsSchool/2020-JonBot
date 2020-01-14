@@ -32,6 +32,9 @@ public class RobotContainer {
   public RobotContainer() {
     driveTrain = new DriveTrain();
     // Configure the button bindings
+
+    driveTrain = new DriveTrain();
+
     configureButtonBindings();
   }
 
@@ -42,9 +45,10 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-  j0 = new JoystickController(0);
-  j1 = new JoystickController(1);
-  driveTrain.setDefaultCommand(new Drive());
+    j0 = new JoystickController(0);
+    j1 = new JoystickController(1);
+
+    driveTrain.setDefaultCommand(new Drive());
   }
 
 
