@@ -15,13 +15,16 @@ import frc.robot.util.JoystickController;
 
 public class RobotContainer {
 
-  public static DriveTrain driveTrain; 
+  public static DriveTrain driveTrain;
 
   public static JoystickController j0;
   public static JoystickController j1;
 
   public RobotContainer() {
+    // Configure the button bindings
+
     driveTrain = new DriveTrain();
+
     configureButtonBindings();
   }
 
@@ -30,7 +33,6 @@ public class RobotContainer {
     j1 = new JoystickController(1);
 
     driveTrain.setDefaultCommand(new Drive());
-
   }
 
   public Command getAutonomousCommand() {
