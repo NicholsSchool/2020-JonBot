@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
+    if (m_autonomousCommand != null) {                                                                                                                                                                                               
       m_autonomousCommand.cancel();
     }
   }
@@ -96,6 +96,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    
   }
 
   @Override
@@ -105,9 +106,9 @@ public class Robot extends TimedRobot {
   }
 
   /**
-   * This function is called periodically during test mode.
+   * This function is called periodically during test mode.1
    */
   @Override
-  public void testPeriodic() {
+  public void testPeriodic() { 
   }
 }
