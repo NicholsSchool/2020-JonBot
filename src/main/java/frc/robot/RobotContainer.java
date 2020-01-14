@@ -21,9 +21,11 @@ import frc.robot.util.JoystickController;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-public static DriveTrain driveTrain;
-public static JoystickController j0;
-public static JoystickController j1;
+
+  public static DriveTrain driveTrain;
+
+  public static JoystickController j0;
+  public static JoystickController j1;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -31,6 +33,9 @@ public static JoystickController j1;
   public RobotContainer() {
     driveTrain = new DriveTrain();
     // Configure the button bindings
+
+    driveTrain = new DriveTrain();
+
     configureButtonBindings();
   }
 
