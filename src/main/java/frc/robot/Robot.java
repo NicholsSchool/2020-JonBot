@@ -96,6 +96,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    m_robotContainer.driveTrain.lFSlave.set(0.2);
+    m_robotContainer.driveTrain.lBMaster.set(0.2);
   }
 
   @Override
