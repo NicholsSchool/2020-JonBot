@@ -9,8 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.Drive;
-import frc.robot.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import frc.robot.util.JoystickController;
 
 /**
@@ -23,6 +24,10 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   public static DriveTrain driveTrain;
+  public static Intake intake;
+  public static Queuer queuer;
+  public static Shooter shooter;
+  public static Dart dart;
 
   public static JoystickController j0;
   public static JoystickController j1;
@@ -34,7 +39,10 @@ public class RobotContainer {
     // Configure the button bindings
 
     driveTrain = new DriveTrain();
-
+    intake = new Intake();
+    shooter = new Shooter();
+    queuer = new Queuer();
+    dart = new Dart();
     configureButtonBindings();
   }
 
@@ -48,7 +56,14 @@ public class RobotContainer {
     j0 = new JoystickController(0);
     j1 = new JoystickController(1);
 
-    driveTrain.setDefaultCommand(new Drive());
+  //  driveTrain.setDefaultCommand(new Drive());
+   
+    dart.setDefaultCommand(new RunCommand(() -> dart.move(j0.getY()), dart));
+    j0.b12.whileHeld(new IntakeBall());
+    j0.b3.whileHeld(new Queue());
+    j0.b5.whileHeld(new Dequeue());
+    j0.b1.whileHeld(new Shoot());
+    
   }
 
 

@@ -16,4 +16,9 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    public static final double SHOOT_SPEED = 1;
+	public static final double INTAKE_SPEED = 1;
+	public static final double QUEUE_SPEED = 1;
+	public static final double DEQUEUE_SPEED = -QUEUE_SPEED;
 }
