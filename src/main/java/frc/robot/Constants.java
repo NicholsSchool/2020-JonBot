@@ -16,4 +16,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    public static final double DART_SPEED_MULTIPLIER = 0.5;
+    public static final double DART_RAMP_RATE = 0.25;
+
 }

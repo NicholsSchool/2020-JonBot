@@ -10,6 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.Drive;
+import frc.robot.commands.MoveDart;
+import frc.robot.subsystems.Dart;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.util.JoystickController;
 
@@ -24,7 +26,7 @@ public class RobotContainer {
 public static DriveTrain driveTrain;
 public static JoystickController j0;
 public static JoystickController j1;
-
+public static Dart dart;
 
 
   /**
@@ -32,12 +34,11 @@ public static JoystickController j1;
    */
   public RobotContainer() {
     // Configure the button bindings
-    configureButtonBindings();
-    j0 = new JoystickController(0);
-    j1 = new JoystickController(1);
-    
+    dart = new Dart();
+
     driveTrain = new DriveTrain();
-    driveTrain.setDefaultCommand(new Drive());
+
+    configureButtonBindings();
    
   }
 
@@ -48,6 +49,12 @@ public static JoystickController j1;
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    j0 = new JoystickController(0);
+    j1 = new JoystickController(1);
+
+    dart.setDefaultCommand(new MoveDart());
+
+   // driveTrain.setDefaultCommand(new Drive());
   }
 
 

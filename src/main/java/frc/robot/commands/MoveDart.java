@@ -7,35 +7,34 @@
 
 package frc.robot.commands;
 
-import com.ctre.phoenix.Util;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class Drive extends CommandBase {
+public class MoveDart extends CommandBase {
   /**
-   * Creates a new Drive.
+   * Creates a new MoveDart.
    */
-  public Drive() {
-    addRequirements(RobotContainer.driveTrain);
+  public MoveDart() {
+    addRequirements(RobotContainer.dart);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.driveTrain.move(RobotContainer.j0.getY(), RobotContainer.j1.getY());
-  }
+    RobotContainer.dart.move(RobotContainer.j0.getY() * Constants.DART_SPEED_MULTIPLIER);
+    }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end(boolean interrupted){
+    RobotContainer.dart.stop(); 
   }
 
   // Returns true when the command should end.
