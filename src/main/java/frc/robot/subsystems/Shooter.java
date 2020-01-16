@@ -16,7 +16,7 @@ import frc.robot.RobotMap;
 
 public class Shooter extends SubsystemBase {
 
-  WPI_TalonSRX shooter;
+ private WPI_TalonSRX shooter;
 
   /**
    * Creates a new Shooter.
@@ -30,7 +30,7 @@ public class Shooter extends SubsystemBase {
     move(Constants.SHOOTER_SPEED);
   }
 
-  public void move(double speed)
+  private void move(double speed)
   {
     shooter.set(speed);
   }
