@@ -7,24 +7,27 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import frc.robot.Constants;
 import frc.robot.RobotMap;
 import frc.robot.util.TalonFactory;
 
-public class Shooter extends SubsystemBase {
+public class Queuer extends SubsystemBase {
 
-  private DriveTrain drive2;
+  private WPI_TalonSRX topQueuerTalon;
+  private WPI_TalonSRX bottomQueuerTalon;
 
-  private WPI_TalonSRX shooterTalon;
-  
   /**
-   * Creates a new Shooter.
-   */
-  public Shooter() {
-    shooterTalon = TalonFactory.createDefaultTalon(RobotMap.LEFT_FRONT_MASTER_ID);
+   * Creates a new Queuer.
+  */
+  public Queuer() {
+
+    topQueuerTalon = new WPI_TalonSRX(RobotMap.TOP_QUEUER);
+    bottomQueuerTalon = new WPI_TalonSRX(RobotMap.BOTTOM_QUEUER);
+
   }
 
   @Override
@@ -32,8 +35,22 @@ public class Shooter extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void shoot(double speed) {
-    shooterTalon.set(speed);
+  private void move(double speed) {
+
+    topQueuerTalon.set(speed);
+    bottomQueuerTalon.set(speed);
+
+  }
+
+  public void queue() {
+    move(Constants.QUEUER_SPEED);
+  }
+
+  public void stop() {
+
+    topQueuerTalon.stopMotor();
+    bottomQueuerTalon.stopMotor();
+    
   }
 
 }
