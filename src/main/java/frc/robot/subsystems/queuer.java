@@ -29,7 +29,7 @@ public class Queuer extends SubsystemBase {
     bottomQueuerTalon = new WPI_TalonSRX(RobotMap.BOTTOM_QUEUER);
 
     topQueuerTalon.setInverted(true);
-    bottomQueuerTalon.setInverted(true);
+    bottomQueuerTalon.setInverted(false);
   }
 
   @Override
