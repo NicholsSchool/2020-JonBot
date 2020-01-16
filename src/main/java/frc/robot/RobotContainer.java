@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.Drive;
 import frc.robot.commands.Shoot;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.util.JoystickController;
 
@@ -28,6 +29,7 @@ public class RobotContainer {
   public static Shooter shooter;
   public static JoystickController j0;
   public static JoystickController j1;
+  public static Intake intake;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.

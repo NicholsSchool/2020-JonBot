@@ -10,12 +10,13 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.RobotMap;
 
 public class Intake extends SubsystemBase {
 
-  WPI_TalonSRX topIntake;
-  WPI_TalonSRX bottomIntake;
+ private WPI_TalonSRX topIntake;
+ private WPI_TalonSRX bottomIntake;
 
   /**
    * Creates a new Intake.
@@ -23,15 +24,21 @@ public class Intake extends SubsystemBase {
   public Intake() {
     topIntake = new WPI_TalonSRX(RobotMap.TOP_INTAKE_ID);
     bottomIntake = new WPI_TalonSRX(RobotMap.BOTTOM_INTAKE_ID);
+
+    bottomIntake.setInverted(true);
   }
 
-  public void move(double speed)
+  public void intake(){
+    move(Constants.INTAKE_SPEED);
+  }
+
+  private void move(double speed)
   {
     topIntake.set(speed);
     bottomIntake.set(speed);
   }
 
-  public void top()
+  public void stop()
   {
     topIntake.stopMotor();
     bottomIntake.stopMotor();
