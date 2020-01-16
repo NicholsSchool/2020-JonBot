@@ -13,18 +13,21 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
+import frc.robot.util.TalonFactory;
 
 public class DriveTrain extends SubsystemBase {
-  /**
-   * Creates a new ExampleSubsystem.
-   */
+
   private WPI_TalonSRX lFMaster;
   private WPI_TalonSRX lFSlave;
+
   private WPI_TalonSRX lBMaster;
-  private WPI_TalonSRX lBSlave;
+  private WPI_TalonSRX lBSLave;
+
   private WPI_TalonSRX rFMaster;
-  private WPI_TalonSRX rFSlave;
+  private WPI_TalonSRX rFSLave;
+
   private WPI_TalonSRX rBMaster;
   private WPI_TalonSRX rBSlave;
 
@@ -32,33 +35,34 @@ public class DriveTrain extends SubsystemBase {
 
   public DriveTrain() {
 
-    lFMaster = new TalonFactory.createDefaultTalon(26);
-    lFSlave = new TalonFactory.createPermanentSlaveTalon(24);
-    lBMaster = new TalonFactory.createDefaultTalon(28);
-    lBSlave = new TalonFactory.createPermanentSlaveTalon(30);
-    rFMaster = new TalonFactory.createDefaultTalon(25);
-    rFSlave = new TalonFactory.createPermanentSlaveTalon(23);
-    rBMaster = new TalonFactory.createDefaultTalon(27);
-    rBSlave = new TalonFactory.createPermanentSlaveTalon(29);
+    lFMaster = new TalonFactory.createDefaultTalon(RobotMap.LEFT_FRONT_MASTER_ID);
+    lFSlave = new TalonFactory.createPermanentSlaveTalon(RobotMap.LEFT_FRONT_SLAVE_ID, RobotMap.LEFT_FRONT_MASTER_ID);
+    lBMaster = new TalonFactory.createDefaultTalon(RobotMap.LEFT_BACK_MASTER_ID);
+    lBSlave = new TalonFactory.createPermanentSlaveTalon(RobotMap.LEFT_BACK_SLAVE_ID, RobotMap.LEFT_BACK_MASTER_ID);
+    rFMaster = new TalonFactory.createDefaultTalon(RobotMap.RIGHT_FRONT_MASTER_ID);
+    rFSlave = new TalonFactory.createPermanentSlaveTalon(RobotMap.RIGHT_FRONT_SLAVE_ID, RobotMap.RIGHT_FRONT_MASTER_ID);
+    rBMaster = new TalonFactory.createDefaultTalon(RobotMap.RIGHT_BACK_MASTER_ID);
+    rBSlave = new TalonFactory.createPermanentSlaveTalon(RobotMap.RIGHT_BACK_SLAVE_ID, RobotMap.RIGHT_BACK_MASTER_ID);
 
     lFSlave.set(ControlMode.Follower, RobotMap.LEFT_FRONT_MASTER_ID);
-    lBSlave.set(ControlMode.Follower, RobotMap.LEFT_BACK_MASTER_ID);
-    rFSlave.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MASTER_ID);
+
+    lBSLave.set(ControlMode.Follower, RobotMap.LEFT_BACK_MASTER_ID);
+
+    rFSLave.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MASTER_ID);
+
     rBSlave.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MASTER_ID);
 
-    drive = new DifferentialDrive(new SpeedControllerGroup(lFMaster, lBMaster), new SpeedControllerGroup(rFMaster, rBMaster));
-
-
-  }
-
-  public void move(double leftSpeed, double rightSpeed) {
-
-    drive.tankDrive(leftSpeed, rightSpeed);
-
+    drive = new DifferentialDrive(new SpeedControllerGroup(lFMaster, lBMaster),
+        new SpeedControllerGroup(rFMaster, rBMaster));
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  }
+
+  public void move(double leftSpeed, double rightSpeed)
+  {
+    drive.tankDrive(leftSpeed, rightSpeed);
   }
 }

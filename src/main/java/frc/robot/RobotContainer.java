@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.Drive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.util.JoystickController;
-import frc.robot.util.JoystickController;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -28,13 +27,14 @@ public class RobotContainer {
   public static JoystickController j0;
   public static JoystickController j1;
 
-
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
+
     driveTrain = new DriveTrain();
+
     configureButtonBindings();
   }
 
@@ -45,12 +45,10 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
     j0 = new JoystickController(0);
     j1 = new JoystickController(1);
 
-    driveTrain.setDefaultCommand(new Drive()); 
-
+    driveTrain.setDefaultCommand(new Drive());
   }
 
 
