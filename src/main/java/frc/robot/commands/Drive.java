@@ -7,11 +7,8 @@
 
 package frc.robot.commands;
 
-<<<<<<< HEAD
-=======
 import com.ctre.phoenix.Util;
 
->>>>>>> 2dbfb55fdc76b35b78b28e2275cdafd21da42191
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
@@ -20,22 +17,14 @@ public class Drive extends CommandBase {
    * Creates a new Drive.
    */
   public Drive() {
-<<<<<<< HEAD
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.driveTrain);
-=======
     addRequirements(RobotContainer.driveTrain);
     // Use addRequirements() here to declare subsystem dependencies.
->>>>>>> 2dbfb55fdc76b35b78b28e2275cdafd21da42191
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-<<<<<<< HEAD
-=======
     
->>>>>>> 2dbfb55fdc76b35b78b28e2275cdafd21da42191
   }
 
   // Called every time the scheduler runs while the command is scheduled.
