@@ -13,8 +13,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
+import frc.robot.util.TalonFactory;
 
 public class DriveTrain extends SubsystemBase {
 
@@ -34,25 +34,17 @@ public class DriveTrain extends SubsystemBase {
 
   public DriveTrain() {
 
-    lFMaster = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MASTER_ID);
-    lFSlave = new WPI_TalonSRX(RobotMap.LEFT_FRONT_SLAVE_ID);
+    lFMaster = TalonFactory.createDefaultTalon(RobotMap.LEFT_FRONT_MASTER_ID);
+    lFSlave = TalonFactory.createPermanentSlaveTalon(RobotMap.LEFT_FRONT_SLAVE_ID, RobotMap.LEFT_FRONT_MASTER_ID);
 
-    lBMaster = new WPI_TalonSRX(RobotMap.LEFT_BACK_MASTER_ID);
-    lBSLave = new WPI_TalonSRX(RobotMap.LEFT_BACK_SLAVE_ID);
+    lBMaster = TalonFactory.createDefaultTalon(RobotMap.LEFT_BACK_MASTER_ID);
+    lBSLave = TalonFactory.createPermanentSlaveTalon(RobotMap.LEFT_BACK_SLAVE_ID, RobotMap.LEFT_BACK_SLAVE_ID);
 
-    rFMaster = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MASTER_ID);
-    rFSLave = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_SLAVE_ID);
+    rFMaster = TalonFactory.createDefaultTalon(RobotMap.RIGHT_FRONT_MASTER_ID);
+    rFSLave = TalonFactory.createPermanentSlaveTalon(RobotMap.RIGHT_FRONT_SLAVE_ID, RobotMap.RIGHT_FRONT_SLAVE_ID);
 
-    rBMaster = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MASTER_ID);
-    rBSlave = new WPI_TalonSRX(RobotMap.RIGHT_BACK_SLAVE_ID);
-
-    lFSlave.set(ControlMode.Follower, RobotMap.LEFT_FRONT_MASTER_ID);
-
-    lBSLave.set(ControlMode.Follower, RobotMap.LEFT_BACK_MASTER_ID);
-
-    rFSLave.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MASTER_ID);
-
-    rBSlave.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MASTER_ID);
+    rBMaster = TalonFactory.createDefaultTalon(RobotMap.RIGHT_BACK_MASTER_ID);
+    rBSlave = TalonFactory.createPermanentSlaveTalon(RobotMap.RIGHT_BACK_SLAVE_ID, RobotMap.RIGHT_BACK_SLAVE_ID);
 
     drive = new DifferentialDrive(new SpeedControllerGroup(lFMaster, lBMaster),
         new SpeedControllerGroup(rFMaster, rBMaster));

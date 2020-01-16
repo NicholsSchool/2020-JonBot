@@ -13,4 +13,14 @@ public class RobotMap {
 
     public static final int RIGHT_BACK_MASTER_ID = 27;
     public static final int RIGHT_BACK_SLAVE_ID = 29;
+
+    public static final int SHOOTER_ID = 31;
+
+    public static final int DART_ID = 21;
+
+    public static final int TOP_QUEUER_ID = 33;
+    public static final int BOTTOM_QUEUER_ID = 22;
+    
+    public static final int TOP_INTAKE_ID = 32;
+    public static final int BOTTOM_INTAKE_ID = 34;
 }
