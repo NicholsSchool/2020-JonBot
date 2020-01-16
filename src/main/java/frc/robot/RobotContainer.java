@@ -7,9 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.Drive;
 import frc.robot.commands.Queue;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Queuer;
