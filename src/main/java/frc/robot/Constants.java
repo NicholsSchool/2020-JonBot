@@ -17,4 +17,5 @@ package frc.robot;
  */
 public final class Constants {
     public static final double INTAKE_SPEED = .5;
+    public static final double RAMP_UP = .5;
 }

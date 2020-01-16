@@ -10,35 +10,40 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.Drive;
+import frc.robot.commands.IntakeBall;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 import frc.robot.util.JoystickController;
 
 /**
- * This class is where the bulk of the robot should be declared.  Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
- * (including subsystems, commands, and button mappings) should be declared here.
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a "declarative" paradigm, very little robot logic should
+ * actually be handled in the {@link Robot} periodic methods (other than the
+ * scheduler calls). Instead, the structure of the robot (including subsystems,
+ * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   public static DriveTrain driveTrain;
+  public static Intake intake;
 
   public static JoystickController j0;
   public static JoystickController j1;
 
   /**
-   * The container for the robot.  Contains subsystems, OI devices, and commands.
+   * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
 
     driveTrain = new DriveTrain();
-
+    intake = new Intake();
+    
     configureButtonBindings();
 
-    driveTrain.setDefaultCommand(new Drive());
-    driveTrain = new DriveTrain();
+    
+    
   }
 
   /**
@@ -51,7 +56,8 @@ public class RobotContainer {
     j0 = new JoystickController(0);
     j1 = new JoystickController(1);
 
-    driveTrain.setDefaultCommand(new Drive());
+    // driveTrain.setDefaultCommand(new Drive());
+    j0.b12.whileHeld(new IntakeBall());
   }
 
 

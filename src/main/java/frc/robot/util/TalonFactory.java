@@ -142,7 +142,4 @@ public class TalonFactory
         return talon;
     }
 
-	public static WPI_TalonSRX createPermenantSlaveTalon(int leftFrontSlaveId) {
-		return null;
-	}
 }
