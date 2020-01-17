@@ -59,9 +59,12 @@ public class RobotContainer {
   //  driveTrain.setDefaultCommand(new Drive());
    
     dart.setDefaultCommand(new RunCommand(() -> dart.move(j0.getY()), dart));
-    j0.b12.whileHeld(new IntakeBall());
+    j0.b12.whileHeld(new IntakeBall().alongWith(new Queue()));
+    j0.b7.whenPressed(new Queue().withTimeout(0.05));
+    j0.b8.whileHeld(new IntakeBall()); 
     j0.b3.whileHeld(new Queue());
     j0.b5.whileHeld(new Dequeue());
+    j0.b9.whileHeld(new ReverseShooter());
     j0.b1.whileHeld(new Shoot());
     
   }

@@ -24,7 +24,7 @@ public class Queuer extends SubsystemBase {
     bottomQueuer = new WPI_TalonSRX(RobotMap.BOTTOM_QUEUER_ID);
 
     topQueuer.setInverted(true);
-    bottomQueuer.setInverted(true);
+    bottomQueuer.setInverted(false);
   }
 
   public void queue()

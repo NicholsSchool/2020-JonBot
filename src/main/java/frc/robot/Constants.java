@@ -19,6 +19,7 @@ public final class Constants {
 
     public static final double SHOOT_SPEED = 1;
 	public static final double INTAKE_SPEED = 1;
-	public static final double QUEUE_SPEED = 1;
-	public static final double DEQUEUE_SPEED = -QUEUE_SPEED;
+	public static final double QUEUE_SPEED = 0.5;
+	public static final double DEQUEUE_SPEED = -0.5;
+	public static final double SHOOTER_REVERSE_SPEED = -0.7;
 }

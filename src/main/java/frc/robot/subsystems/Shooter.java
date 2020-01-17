@@ -27,6 +27,13 @@ public class Shooter extends SubsystemBase {
       move(Constants.SHOOT_SPEED);
   }
 
+  public void reverse() {
+      double speed = Constants.SHOOTER_REVERSE_SPEED;
+      if(speed > 0)
+        speed = -speed;
+      move(speed);
+  }
+
   private void move(double speed)
   {
     shooter.set(speed);
