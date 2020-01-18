@@ -8,10 +8,12 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
@@ -53,9 +55,19 @@ public class DriveTrain extends SubsystemBase {
     rFSLave.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MASTER_ID);
 
     rBSlave.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MASTER_ID);
+    
+    lFMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 100);
+    lBMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 100);
+    rFMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 100);
+    rBMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 100);
 
     drive = new DifferentialDrive(new SpeedControllerGroup(lFMaster, lBMaster),
         new SpeedControllerGroup(rFMaster, rBMaster));
+  }
+  
+  public void encoderTest()
+  {
+    SmartDashboard.putNumber("Left Master", lFMaster.getSelectedSensorPosition());
   }
 
   @Override
