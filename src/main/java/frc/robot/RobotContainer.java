@@ -52,11 +52,11 @@ public class RobotContainer {
     JoystickController j0 = new JoystickController(0);
     JoystickController j1 = new JoystickController(1);
 
-    driveTrain.setDefaultCommand( new RunCommand(() -> {
-      driveTrain.move(j0.getY(), j1.getY());
-      System.out.println("Driving " + j0.getY());
+    // driveTrain.setDefaultCommand( new RunCommand(() -> {
+    //   driveTrain.move(j0.getY(), j1.getY());
+    //   System.out.println("Driving " + j0.getY());
 
-    }, driveTrain));
+    // }, driveTrain));
     
  //   j0.b7.whenPressed(new PIDTurn(90));
 
