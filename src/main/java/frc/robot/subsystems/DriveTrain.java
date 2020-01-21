@@ -12,7 +12,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
 public class DriveTrain extends SubsystemBase {
@@ -33,18 +35,19 @@ public class DriveTrain extends SubsystemBase {
 
     rBMaster = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MASTER_ID);
     rBSlave = new WPI_TalonSRX(RobotMap.RIGHT_BACK_SLAVE_ID);
-
+    
     lFSlave.set(ControlMode.Follower, RobotMap.LEFT_FRONT_MASTER_ID);
     lBSlave.set(ControlMode.Follower, RobotMap.LEFT_BACK_MASTER_ID);
     rFSlave.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MASTER_ID);
     rBSlave.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MASTER_ID);
-
+    
     drive = new DifferentialDrive(new SpeedControllerGroup(lFMaster, lBMaster), 
                                   new SpeedControllerGroup(rFMaster, rBMaster));
   }
 
   public void move(double leftSpeed, double rightSpeed)
   {
+  //  System.out.println("LSpeed: " + leftSpeed);
     drive.tankDrive(leftSpeed, rightSpeed);
   }
 
@@ -52,5 +55,7 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  //  lFMaster.set(0.2);
+    SmartDashboard.putNumber("NAVX: ", RobotContainer.navX.getAngle());
   }
 }

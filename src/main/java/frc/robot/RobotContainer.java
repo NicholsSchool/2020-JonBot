@@ -7,9 +7,15 @@
 
 package frc.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import frc.robot.commands.PIDTurn;
+import frc.robot.sensors.NavX;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.util.JoystickController;
 
@@ -23,11 +29,15 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static DriveTrain driveTrain;
 
+  public static NavX navX;
+
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
+    navX = new NavX(new AHRS(SPI.Port.kMXP));
+
     driveTrain = new DriveTrain();
     configureButtonBindings();
   }
@@ -44,8 +54,12 @@ public class RobotContainer {
 
     driveTrain.setDefaultCommand( new RunCommand(() -> {
       driveTrain.move(j0.getY(), j1.getY());
+      System.out.println("Driving " + j0.getY());
+
     }, driveTrain));
     
+ //   j0.b7.whenPressed(new PIDTurn(90));
+
   }
 
 
