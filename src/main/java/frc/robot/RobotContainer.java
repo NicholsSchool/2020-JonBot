@@ -53,9 +53,9 @@ public class RobotContainer {
     j0 = new JoystickController(0);
     j1 = new JoystickController(1);
 
-    j0.b1.whileHeld(new Shoot());
+   // j0.b1.whileHeld(new Shoot());
 
-    // driveTrain.setDefaultCommand(new Drive());
+     driveTrain.setDefaultCommand(new Drive());
   }
 
 
