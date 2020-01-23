@@ -1,5 +1,9 @@
 package frc.robot;
 
+
+import com.kauailabs.navx.frc.AHRS;
+
+
 public class RobotMap {
     public static final int LEFT_FRONT_MASTER_ID = 26;
     public static final int LEFT_FRONT_SLAVE_ID = 24;
@@ -19,4 +23,7 @@ public class RobotMap {
     public static final int TOP_QUEUER = 33;
     public static final int BOTTOM_INTAKE = 34;
     public static final int TOP_INTAKE = 32;
+
+    public static AHRS ahrs;
+    
 }

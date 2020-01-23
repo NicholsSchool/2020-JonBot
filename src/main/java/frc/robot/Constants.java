@@ -19,4 +19,6 @@ public final class Constants {
 
    public static final double QUEUER_SPEED = .5;
 
+   public static final int CONFIG_TIMEOUT = 100;
+
 }

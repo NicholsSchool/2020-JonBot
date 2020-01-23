@@ -8,12 +8,14 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotContainer;
+import frc.robot.Constants;
 import frc.robot.RobotMap;
 import frc.robot.util.TalonFactory;
 
@@ -55,17 +57,44 @@ public class DriveTrain extends SubsystemBase {
 
     rBSlave.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MASTER_ID);
 
+    lFMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, Constants.CONFIG_TIMEOUT);
+
+    lBMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, Constants.CONFIG_TIMEOUT);
+
+    rFMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, Constants.CONFIG_TIMEOUT);
+
+    rBMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, Constants.CONFIG_TIMEOUT);
+
     drive = new DifferentialDrive(new SpeedControllerGroup(lFMaster, lBMaster),
         new SpeedControllerGroup(rFMaster, rBMaster));
+
+  }
+
+  public void encoderTest() {
+    
+    SmartDashboard.putNumber("lFEncoderValue", lFMaster.getSelectedSensorPosition());
+
+    SmartDashboard.putNumber("lBEncoderValue", lBMaster.getSelectedSensorPosition());
+
+    SmartDashboard.putNumber("rFEncoderValue", rFMaster.getSelectedSensorPosition());
+
+    SmartDashboard.putNumber("rBEncoderValue", rBMaster.getSelectedSensorPosition());
+
   }
 
   @Override
   public void periodic() {
+
     // This method will be called once per scheduler run
+
+    encoderTest();
+
   }
 
-  public void move(double leftSpeed, double rightSpeed)
-  {
+  public void move(double leftSpeed, double rightSpeed) {
+
     drive.tankDrive(leftSpeed, rightSpeed);
+
   }
+
 }
