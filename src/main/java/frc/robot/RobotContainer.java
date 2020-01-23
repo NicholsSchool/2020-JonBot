@@ -10,10 +10,13 @@ package frc.robot;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.Queue;
+import frc.robot.commands.Drive;
+import frc.robot.commands.Shoot;
 import frc.robot.sensors.NavX;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Queuer;
+import frc.robot.subsystems.Shooter;
 import frc.robot.util.JoystickController;
 
 import edu.wpi.first.wpilibj.SPI;
@@ -23,14 +26,10 @@ public class RobotContainer {
   public static NavX navx;
 
   public static DriveTrain driveTrain;
-
-  public static JoystickController b3;
+  public static Shooter shooter;
   public static JoystickController j0;
   public static JoystickController j1;
-  
-  public static Queuer queuer;
-  // The robot's subsystems and commands are defined here...
-
+  public static Intake intake;
 
   public RobotContainer() {
 
@@ -39,8 +38,7 @@ public class RobotContainer {
     navx = new NavX(new AHRS (SPI.Port.kMXP));
 
     driveTrain = new DriveTrain();
-
-    queuer = new Queuer();
+    shooter = new Shooter();
     
     configureButtonBindings();
     
@@ -50,9 +48,9 @@ public class RobotContainer {
     j0 = new JoystickController(0);
     j1 = new JoystickController(1);
 
-    j0.b3.whileHeld(new Queue());
-    
-    // driveTrain.setDefaultCommand(new Drive());
+   // j0.b1.whileHeld(new Shoot());
+
+     driveTrain.setDefaultCommand(new Drive());
   }
 
   public Command getAutonomousCommand() {

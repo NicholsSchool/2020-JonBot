@@ -41,21 +41,13 @@ public class DriveTrain extends SubsystemBase {
     lFSlave = TalonFactory.createPermanentSlaveTalon(RobotMap.LEFT_FRONT_SLAVE_ID, RobotMap.LEFT_FRONT_MASTER_ID);
 
     lBMaster = TalonFactory.createDefaultTalon(RobotMap.LEFT_BACK_MASTER_ID);
-    lBSLave = TalonFactory.createPermanentSlaveTalon(RobotMap.LEFT_BACK_SLAVE_ID, RobotMap.LEFT_BACK_MASTER_ID);
+    lBSLave = TalonFactory.createPermanentSlaveTalon(RobotMap.LEFT_BACK_SLAVE_ID, RobotMap.LEFT_BACK_SLAVE_ID);
 
     rFMaster = TalonFactory.createDefaultTalon(RobotMap.RIGHT_FRONT_MASTER_ID);
-    rFSLave = TalonFactory.createPermanentSlaveTalon(RobotMap.RIGHT_FRONT_SLAVE_ID, RobotMap.RIGHT_FRONT_MASTER_ID);
+    rFSLave = TalonFactory.createPermanentSlaveTalon(RobotMap.RIGHT_FRONT_SLAVE_ID, RobotMap.RIGHT_FRONT_SLAVE_ID);
 
     rBMaster = TalonFactory.createDefaultTalon(RobotMap.RIGHT_BACK_MASTER_ID);
-    rBSlave = TalonFactory.createPermanentSlaveTalon(RobotMap.RIGHT_BACK_SLAVE_ID, RobotMap.RIGHT_BACK_MASTER_ID);
-
-    lFSlave.set(ControlMode.Follower, RobotMap.LEFT_FRONT_MASTER_ID);
-
-    lBSLave.set(ControlMode.Follower, RobotMap.LEFT_BACK_MASTER_ID);
-
-    rFSLave.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MASTER_ID);
-
-    rBSlave.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MASTER_ID);
+    rBSlave = TalonFactory.createPermanentSlaveTalon(RobotMap.RIGHT_BACK_SLAVE_ID, RobotMap.RIGHT_BACK_SLAVE_ID);
 
     lFMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, Constants.CONFIG_TIMEOUT);
 

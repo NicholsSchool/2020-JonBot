@@ -74,6 +74,7 @@ public class TalonFactory
 
     public static WPI_TalonSRX createTalon(int id, Configuration config) {
         WPI_TalonSRX talon = new WPI_TalonSRX(id);
+        talon.configFactoryDefault();
         talon.set(ControlMode.PercentOutput, 0.0);
 
         talon.changeMotionControlFramePeriod(config.MOTION_CONTROL_FRAME_PERIOD_MS);

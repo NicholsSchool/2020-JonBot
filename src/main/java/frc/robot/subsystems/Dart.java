@@ -12,29 +12,25 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
-public class Queuer extends SubsystemBase {
-  WPI_TalonSRX topQueuer;
-  WPI_TalonSRX bottomQueuer;
+public class Dart extends SubsystemBase {
+  WPI_TalonSRX dart;
 
   /**
-   * Creates a new Queuer.
+   * Creates a new Dart.
    */
-  public Queuer() {
-    topQueuer = new WPI_TalonSRX(RobotMap.TOP_QUEUER_ID);
-    bottomQueuer = new WPI_TalonSRX(RobotMap.BOTTOM_QUEUER_ID);
+  public Dart() {
+    dart = new WPI_TalonSRX(RobotMap.DART_ID);
 
   }
 
   public void move(double speed)
   {
-    topQueuer.set(speed);
-    bottomQueuer.set(speed);
+    dart.set(speed);
   }
 
   public void stop()
   {
-    topQueuer.stopMotor();
-    bottomQueuer.stopMotor();
+    dart.stopMotor();
   }
 
   @Override

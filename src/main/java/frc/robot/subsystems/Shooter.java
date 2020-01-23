@@ -8,32 +8,40 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.fasterxml.jackson.databind.cfg.MutableConfigOverride;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import frc.robot.Constants;
 import frc.robot.RobotMap;
-import frc.robot.util.TalonFactory;
 
 public class Shooter extends SubsystemBase {
 
-  private DriveTrain drive2;
+ private WPI_TalonSRX shooter;
 
-  private WPI_TalonSRX shooterTalon;
-  
   /**
    * Creates a new Shooter.
    */
   public Shooter() {
-    shooterTalon = TalonFactory.createDefaultTalon(RobotMap.LEFT_FRONT_MASTER_ID);
+    shooter = new WPI_TalonSRX(RobotMap.SHOOTER_ID);
+  }
+
+  public void shoot()
+  {
+    move(Constants.SHOOTER_SPEED);
+  }
+
+  private void move(double speed)
+  {
+    shooter.set(speed);
+  }
+
+  public void stop()
+  {
+    shooter.stopMotor();
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
-  public void shoot(double speed) {
-    shooterTalon.set(speed);
-  }
-
 }

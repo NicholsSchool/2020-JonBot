@@ -10,31 +10,38 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.RobotMap;
 
-public class Queuer extends SubsystemBase {
-  WPI_TalonSRX topQueuer;
-  WPI_TalonSRX bottomQueuer;
+public class Intake extends SubsystemBase {
+
+ private WPI_TalonSRX topIntake;
+ private WPI_TalonSRX bottomIntake;
 
   /**
-   * Creates a new Queuer.
+   * Creates a new Intake.
    */
-  public Queuer() {
-    topQueuer = new WPI_TalonSRX(RobotMap.TOP_QUEUER_ID);
-    bottomQueuer = new WPI_TalonSRX(RobotMap.BOTTOM_QUEUER_ID);
+  public Intake() {
+    topIntake = new WPI_TalonSRX(RobotMap.TOP_INTAKE_ID);
+    bottomIntake = new WPI_TalonSRX(RobotMap.BOTTOM_INTAKE_ID);
 
+    bottomIntake.setInverted(true);
   }
 
-  public void move(double speed)
+  public void intake(){
+    move(Constants.INTAKE_SPEED);
+  }
+
+  private void move(double speed)
   {
-    topQueuer.set(speed);
-    bottomQueuer.set(speed);
+    topIntake.set(speed);
+    bottomIntake.set(speed);
   }
 
   public void stop()
   {
-    topQueuer.stopMotor();
-    bottomQueuer.stopMotor();
+    topIntake.stopMotor();
+    bottomIntake.stopMotor();
   }
 
   @Override
