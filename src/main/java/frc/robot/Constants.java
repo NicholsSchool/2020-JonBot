@@ -19,4 +19,24 @@ public final class Constants {
 
    public static final double QUEUER_SPEED = .5;
 
+   public static final int CONFIG_TIMEOUT = 100;
+
+   public static final double LEFT_FRONT_MASTER_F = 0.2;
+    public static final double LEFT_FRONT_MASTER_P = 0.2;
+    public static final double LEFT_FRONT_MASTER_I = 0;
+    public static final double LEFT_FRONT_MASTER_D = 0; 
+    
+    public static final double LEFT_BACK_MASTER_F = 0.2;
+    public static final double LEFT_BACK_MASTER_P = 0.2;
+    public static final double LEFT_BACK_MASTER_I = 0;
+    public static final double LEFT_BACK_MASTER_D = 0; 
+    public static final double RIGHT_BACK_MASTER_F = 0.2;
+    public static final double RIGHT_BACK_MASTER_P = 0.2;
+    public static final double RIGHT_BACK_MASTER_I = 0;
+    public static final double RIGHT_BACK_MASTER_D = 0; 
+    public static final double RIGHT_FRONT_MASTER_F = 0.2;
+    public static final double RIGHT_FRONT_MASTER_P = 0.2;
+    public static final double RIGHT_FRONT_MASTER_I = 0;
+    public static final double RIGHT_FRONT_MASTER_D = 0; 
+
 }

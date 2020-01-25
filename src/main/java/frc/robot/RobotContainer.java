@@ -7,19 +7,27 @@
 
 package frc.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.Drive;
+import frc.robot.commands.MotionMagic;
 import frc.robot.commands.Queue;
+import frc.robot.sensors.NavX;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Queuer;
 import frc.robot.util.JoystickController;
 
 public class RobotContainer {
+  public  static NavX navX;
 
   public static DriveTrain driveTrain;
 
   public static JoystickController b3;
+
+  public static JoystickController b12;
 
   public static JoystickController j0;
   public static JoystickController j1;
@@ -33,6 +41,8 @@ public class RobotContainer {
     // Configure the button bindings
 
     queuer = new Queuer();
+
+    navX = new NavX(new AHRS(SPI.Port.kMXP));
     
     configureButtonBindings();
   }
@@ -42,8 +52,13 @@ public class RobotContainer {
     j1 = new JoystickController(1);
 
     j0.b3.whileHeld(new Queue());
+    j0.b12.whenPressed(new MotionMagic());
+
     
-    // driveTrain.setDefaultCommand(new Drive());
+
+
+    
+     driveTrain.setDefaultCommand(new Drive());
   }
 
   public Command getAutonomousCommand() {
