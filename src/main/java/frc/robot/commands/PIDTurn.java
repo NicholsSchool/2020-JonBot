@@ -22,7 +22,7 @@ public class PIDTurn extends PIDCommand {
   public PIDTurn(double angle) {
     super(
         // The controller that the command will use
-        new PIDController(0.005, 0, 0),
+        new PIDController(0.02, 0, 0),
         // This should return the measurement
         () -> RobotContainer.navX.getAngle(),
         // This should return the setpoint (can also be a constant)

@@ -55,10 +55,7 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-  rFMaster.set(0.2);
-    rBMaster.set(0.2);
-    lFMaster.set(0.2);
-    lBMaster.set(0.2);
+
  // move(0.3, 0.3);
     SmartDashboard.putNumber("NAVX: ", RobotContainer.navX.getAngle());
   }
