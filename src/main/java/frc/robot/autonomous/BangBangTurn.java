@@ -5,41 +5,74 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.Queuer;
 
-public class Queue extends CommandBase {
+public class BangBangTurn extends CommandBase {
+
+  public double speed;
+  public double desiredAngle;
+
   /**
-   * Creates a new Queue.
+   * Creates a new BangBangTurn.
    */
-  public Queue() {
-    addRequirements(RobotContainer.queuer);
+  public BangBangTurn(double angle, double turnSpeed) {
+
     // Use addRequirements() here to declare subsystem dependencies.
+
+    speed = turnSpeed;
+    desiredAngle = angle;
+
+    addRequirements(RobotContainer.driveTrain);
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+
+    System.out.println("Initialized!");
+
+    RobotContainer.navx.reset();
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.queuer.queue();
+
+    System.out.println("I am turning!");
+
+    if (desiredAngle > 0) {
+
+      RobotContainer.driveTrain.move(speed, -speed);
+
+    } else {
+
+      RobotContainer.driveTrain.move(-speed, speed);
+
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.queuer.stop();
+
+    System.out.println("Stopped!");
+
+    RobotContainer.driveTrain.stop();
+
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+
+    double angleAt = RobotContainer.navx.getAngle();
+    
+    return (angleAt < desiredAngle + 5 && angleAt > desiredAngle - 5);
+
   }
 }
