@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import frc.robot.commands.MotionMagicTurn;
 import frc.robot.commands.PIDTurn;
 import frc.robot.sensors.NavX;
 import frc.robot.subsystems.DriveTrain;
@@ -52,12 +53,11 @@ public class RobotContainer {
     JoystickController j0 = new JoystickController(0);
     JoystickController j1 = new JoystickController(1);
 
-    // driveTrain.setDefaultCommand( new RunCommand(() -> {
-    //   driveTrain.move(j0.getY(), j1.getY());
-
-    // }, driveTrain));
+    driveTrain.setDefaultCommand(new RunCommand(() -> {
+      driveTrain.move(j0.getY(), j1.getY());
+    }, driveTrain));
     
-    j0.b7.whenPressed(new PIDTurn(90));
+    // j0.b7.whenPressed(new MotionMagicTurn(90));
 
   }
 

@@ -16,4 +16,15 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    public static final double DRIVE_F = 0.5;
+    public static final double DRIVE_P = 0.5;
+
+    public static final double DRIVE_SENSOR_COEFF = 2.0;
+
+    public static final int MOTION_CRUISE_VEL = 1200;
+    public static final int MOTION_ACCEL = MOTION_CRUISE_VEL;
+
+    public static final int DRIVE_BASE_DIAMETER = 0;
+
+    public static final int TURN_MARGIN_OF_ERROR = 5;
 }
