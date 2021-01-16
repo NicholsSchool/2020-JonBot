@@ -8,7 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -110,6 +111,13 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
     SmartDashboard.putNumber("Navx Angle: ", RobotContainer.navx.getAngle());
+    SmartDashboard.putBoolean("IsBrownedOut", RobotController.isBrownedOut());
+
+    while (RobotController.isBrownedOut()) 
+    {
+      Constants.INTAKE_SPEED = 0;
+      Constants.SHOOTER_SPEED = 0;
+    }
 
   }
 
@@ -124,5 +132,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    NetworkTableInstance.getDefault().getTable("TestTable").getEntry("TestEntry").setString("Hello World! Dr. Teeth and Camden were here!");
+    String s = NetworkTableInstance.getDefault().getTable("TestTable").getEntry("TestEntry").getString("");
+    System.out.println(s);
   }
 }
