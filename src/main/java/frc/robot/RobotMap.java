@@ -26,4 +26,6 @@ public class RobotMap {
     
     public static final int TOP_INTAKE_ID = 32;
     public static final int BOTTOM_INTAKE_ID = 34;
+
+    public static final int MIDRD_ID = 22;
 }
